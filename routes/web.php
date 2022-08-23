@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckController;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,9 @@ use App\Http\Controllers\CheckController;
 */
 
 Route::get('/', function () {
+    // $search='Off';
+    // $role = Role::findOrFail('Citizen');
+    // echo $role->id;
     return view('welcome');
 });
 

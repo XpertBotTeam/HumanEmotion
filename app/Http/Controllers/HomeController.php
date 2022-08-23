@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,9 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public const OFFICER = 'Officer';
+    public const CITIZEN = 'Citizen';
+
     /**
      * Show the application dashboard.
      *
@@ -23,6 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $role = Role::findOrFail($user->role_id);
+        $roleName = $role->roleName;
+            
+        if ($roleName == HomeController::OFFICER){
+            return view('officer');    
+        }
+        else{
+            return view('home');
+        }
     }
 }
