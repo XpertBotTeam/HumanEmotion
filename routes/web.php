@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckController;
+use App\Http\Controllers\IncidentController;
 use App\Models\Role;
 
 /*
@@ -31,3 +32,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 Route::post('/check', [CheckController::class, 'check']);
+Route::post('/Incident/add', [IncidentController::class, 'add']);
