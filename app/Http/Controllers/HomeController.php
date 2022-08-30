@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
+use App\Models\IncidentType;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,10 @@ class HomeController extends Controller
             return view('officer');    
         }
         else{
-            return view('home');
+            $types= IncidentType::all();
+            return view('home',[
+                'types' => $types,
+            ]);
         }
     }
 }

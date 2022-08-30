@@ -22,5 +22,15 @@ class DatabaseSeeder extends Seeder
         $role2=\App\Models\Role::factory()->create([
             'roleName' => 'Citizen',
         ]);
+
+        $incidentType=\App\Models\IncidentType::factory()->create([
+            'type' => 'crime',
+        ]);
+        $incidentType=\App\Models\IncidentType::factory()->create([
+            'type' => 'accident',
+        ]);
+        $incidentType=\App\Models\IncidentType::factory()->create([
+            'type' => 'fire',
+        ]);
     }
 }
