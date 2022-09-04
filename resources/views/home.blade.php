@@ -77,29 +77,60 @@
 <script>
 
 let map;
-// var lat = 33.888630;
-// var lng = 35.495480;
+var lat = 33.888630;
+var lng = 35.495480;
 
+var lat1 = 33.08;
+var lng1 = 36.495480;
 
+const incidents = [
+    {
+        lat: 33.888630,
+        lng: 35.495480
+    },
+    {
+        lat: 33.08,
+        lng: 36.495480
+    },
+
+    {
+        lat: 33.6,
+        lng: 36.06
+    }
+]
+
+var latt = {{ $inc->lat}};
+var lngg = {{ $inc->lng}};
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 33.888630, lng: 35.495480 },
     zoom: 8,
   });
 
+
+//     for(var i=0; i<incidents.length;i++){
+//         new google.maps.Marker({
+//         position: { lat: incidents[i].lat, lng: incidents[i].lng },
+//         map,
+//         title: "Hello World!",
+// });
+//     }
+    
+
   
   var marker =  new google.maps.Marker({
-    position: { lat: 33.888630, lng: 35.495480 },
+    position: { lat: latt, lng: lngg },
     map,
     title: "Hello World!",
 });
 
+
 google.maps.event.addListener(map, 'click', function(event) {
 
-document.getElementById('lat').value = event.latLng.lat();
-document.getElementById('lng').value = event.latLng.lng();
-var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
-marker.setPosition(position);
+    document.getElementById('lat').value = event.latLng.lat();
+    document.getElementById('lng').value = event.latLng.lng();
+    var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
+    marker.setPosition(position);
 
 });
 }

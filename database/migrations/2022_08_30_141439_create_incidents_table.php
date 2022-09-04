@@ -19,8 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('incidentType_id');
             $table->unsignedBigInteger('priority');
             $table->string('details');
-            $table->decimal('lat');
-            $table->decimal('lng');
+
+            $table->double('lat')->change();
+            $table->double('lng')->change();
 
             $table->index('incidentType_id');
         });

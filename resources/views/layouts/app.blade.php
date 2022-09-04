@@ -19,7 +19,7 @@
     <link href="css/main.css" rel="stylesheet">
 
 </head>
-<body class="home">
+<body class="home" style="height: 700px">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark bg-gradient shadow-sm">
             <div class="container">

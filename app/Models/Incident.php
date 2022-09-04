@@ -12,6 +12,6 @@ class Incident extends Model
     protected $guarded=[];
 
     public function incidentType(){
-        return $this->belongsTo(IncidentType::class);
+        return $this->belongsTo(IncidentType::class,'incidentType_id');
     }
 }

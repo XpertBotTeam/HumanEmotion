@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
 use App\Models\IncidentType;
+use App\Models\Incident;
 
 class HomeController extends Controller
 {
@@ -33,12 +34,17 @@ class HomeController extends Controller
         $roleName = $role->roleName;
             
         if ($roleName == HomeController::OFFICER){
-            return view('officer');    
+           $incidents = Incident::all(); 
+            return view('officer',[
+                'incidents' => $incidents,
+            ]);    
         }
         else{
             $types= IncidentType::all();
+            $inc=Incident::first();
             return view('home',[
                 'types' => $types,
+                'inc' => $inc
             ]);
         }
     }
