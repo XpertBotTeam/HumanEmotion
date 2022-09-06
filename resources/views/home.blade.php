@@ -28,11 +28,13 @@
                                     <input type="radio" value="1" class="btn-check" name="options" id="option2" autocomplete="off">
                                     <label class="btn btn-danger" for="option2">High</label>
                                     
-                                    <input type="radio"  value="2" class="btn-check" name="options" id="option3" autocomplete="off">
-                                    <label style=" color: black;background-color: yellow;border-color: yellow" class="btn btn-secondary" for="option3">Medium</label>
-
                                     <input type="radio" value="3" class="btn-check" name="options" id="option4" autocomplete="off">
-                                    <label class="btn btn-warning" for="option4">Low</label>
+                                    <label class="btn btn-warning" for="option4">Medium</label>
+
+                                    <input type="radio"  value="2" class="btn-check" name="options" id="option3" autocomplete="off">
+                                    <label style=" color: black;background-color: yellow;border-color: yellow" class="btn btn-secondary" for="option3">Low</label>
+
+                                 
                             </div>
                         </div>
 
@@ -118,21 +120,33 @@ function initMap() {
     
 
   
-  var marker =  new google.maps.Marker({
-    position: { lat: latt, lng: lngg },
-    map,
-    title: "Hello World!",
-});
+var marker;
+// create marker with your current location
+navigator.geolocation.getCurrentPosition(
+    function (position) {
+            marker =  new google.maps.Marker({
+            position: {lat:position.coords.latitude, lng: position.coords.longitude},
+            map,
+            title: "Hello World!",
+        });
 
+        //save the lat and lng to save them in database if user not select location
+        document.getElementById('lat').value = position.coords.latitude;
+        document.getElementById('lng').value = position.coords.longitude;
+    }
+    
+);
 
 google.maps.event.addListener(map, 'click', function(event) {
 
-    document.getElementById('lat').value = event.latLng.lat();
-    document.getElementById('lng').value = event.latLng.lng();
-    var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
-    marker.setPosition(position);
+document.getElementById('lat').value = event.latLng.lat();
+document.getElementById('lng').value = event.latLng.lng();
+var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
+marker.setPosition(position);
 
 });
+
+
 }
 
 
@@ -144,7 +158,7 @@ google.maps.event.addListener(map, 'click', function(event) {
 window.initMap = initMap;
 </script>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvt-jIlfujkdVUX9GuwTxRChtvHzM1bGs&region=LB&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-B3XSCEwfae0pYoGnvWE4I97aGfUi5Jc&region=LB&callback=initMap">
 </script>
 @stop
 

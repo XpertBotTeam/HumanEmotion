@@ -79,8 +79,9 @@
 
 
 
-
+//get the incidents table from controller
 var incidents = {!! $incidents->toJson() !!};
+var allMarkers = [];
 
 console.log(incidents);
 
@@ -93,29 +94,61 @@ function initMap() {
 
   //add all incidents on the map as markers
 
-    // for(var i=0; i<incidents.length;i++){
-    //     new google.maps.Marker({
-    //     position: { lat: incidents[i].lat, lng: incidents[i].lng },
-    //     map,
-    //     title: "Hello World!",
-    //     });
-    // }
-
     for (const incident of incidents) {
-        new google.maps.Marker({
-        position: { lat: incident.lat, lng: incident.lng },
-        map,
-        title: "Hello World!",
+        const text1 = "<h3><b>"
+        let contentString = text1.concat(incident.incident_type.type,"</b></h3><div><p><i>",incident.details,"</i></p></div>");
+       
+
+        var marker=new google.maps.Marker({
+            position: { lat: incident.lat, lng: incident.lng },
+            map,
+            title: incident.incident_type.type,
+            customInfo: contentString
+        });
+
+        if(incident.priority==1){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+        }else if(incident.priority==2){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
+        }else{
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/orange-dot.png')
+        }
+
+        allMarkers.push(marker);
+        
+    }
+
+    for(const mark of allMarkers){
+
+        const infowindow = new google.maps.InfoWindow({
+            content: mark.customInfo,
+        });
+        mark.addListener("click", () => {
+            infowindow.open({
+                anchor: mark,
+                map,
+            });
         });
     }
 }
 
+
+
 window.initMap = initMap;
+
+
+// google.maps.event.addListener(marker, 'click', function() {
+    //     infowindow.setContent(contentString);
+    //     infowindow.open(map, marker);
+    //     infoWindow.setPosition([incident.lat, incident.lng]);
+    // });
 
 </script>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvt-jIlfujkdVUX9GuwTxRChtvHzM1bGs&region=LB&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-B3XSCEwfae0pYoGnvWE4I97aGfUi5Jc&region=LB&callback=initMap">
 </script>
 @stop
 
+
+        
 
