@@ -43,6 +43,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Priority</th>
                     <th scope="col">Details</th>
+                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,6 +62,7 @@
                                 <td>low</td>
                             @endif
                             <td> {{$incident->details}} </td>
+                            <td> <a href="/Incident/{{$incident->id}}/delete">Delete</a> </td>
                             
                         </tr>       
                     @endforeach
@@ -109,9 +111,9 @@ function initMap() {
         if(incident.priority==1){
             marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
         }else if(incident.priority==2){
-            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
-        }else{
             marker.setIcon('http://maps.google.com/mapfiles/ms/icons/orange-dot.png')
+        }else{
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png')
         }
 
         allMarkers.push(marker);

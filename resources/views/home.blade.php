@@ -28,10 +28,10 @@
                                     <input type="radio" value="1" class="btn-check" name="options" id="option2" autocomplete="off">
                                     <label class="btn btn-danger" for="option2">High</label>
                                     
-                                    <input type="radio" value="3" class="btn-check" name="options" id="option4" autocomplete="off">
+                                    <input type="radio" value="2" class="btn-check" name="options" id="option4" autocomplete="off">
                                     <label class="btn btn-warning" for="option4">Medium</label>
 
-                                    <input type="radio"  value="2" class="btn-check" name="options" id="option3" autocomplete="off">
+                                    <input type="radio"  value="3" class="btn-check" name="options" id="option3" autocomplete="off">
                                     <label style=" color: black;background-color: yellow;border-color: yellow" class="btn btn-secondary" for="option3">Low</label>
 
                                  
@@ -79,46 +79,12 @@
 <script>
 
 let map;
-var lat = 33.888630;
-var lng = 35.495480;
 
-var lat1 = 33.08;
-var lng1 = 36.495480;
-
-const incidents = [
-    {
-        lat: 33.888630,
-        lng: 35.495480
-    },
-    {
-        lat: 33.08,
-        lng: 36.495480
-    },
-
-    {
-        lat: 33.6,
-        lng: 36.06
-    }
-]
-
-var latt = {{ $inc->lat}};
-var lngg = {{ $inc->lng}};
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 33.888630, lng: 35.495480 },
     zoom: 8,
   });
-
-
-//     for(var i=0; i<incidents.length;i++){
-//         new google.maps.Marker({
-//         position: { lat: incidents[i].lat, lng: incidents[i].lng },
-//         map,
-//         title: "Hello World!",
-// });
-//     }
-    
-
   
 var marker;
 // create marker with your current location
@@ -139,10 +105,10 @@ navigator.geolocation.getCurrentPosition(
 
 google.maps.event.addListener(map, 'click', function(event) {
 
-document.getElementById('lat').value = event.latLng.lat();
-document.getElementById('lng').value = event.latLng.lng();
-var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
-marker.setPosition(position);
+    document.getElementById('lat').value = event.latLng.lat();
+    document.getElementById('lng').value = event.latLng.lng();
+    var position = {lat: event.latLng.lat(),lng: event.latLng.lng()};
+    marker.setPosition(position);
 
 });
 

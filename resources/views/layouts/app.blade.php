@@ -19,13 +19,17 @@
     <link href="css/main.css" rel="stylesheet">
 
 </head>
-<body class="home" style="height: 700px">
+<body class="home" style="height: 700px;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark bg-gradient shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color:white">
-                    Atificial Intelligence
-                </a>
+                {{-- <a class="navbar-brand" href="{{ url('/') }}" style="color:white">
+                    Internal Security Forces
+                </a> --}}
+                <a class="navbar-brand" href="#">
+                    <img src="/img/ISF_logo.png" alt="" width="50" height="40" class="d-inline-block align-text-top">
+                    <span style="color:white">Internal Security Forces</span>
+                  </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

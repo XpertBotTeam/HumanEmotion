@@ -25,4 +25,16 @@ class IncidentController extends Controller
 
         //after adding new incident you should view the list of incidents
     }
+
+    protected function delete($incident){
+
+        $incidentObj=Incident::findOrFail($incident);
+        $incidentObj->delete();
+
+        $incidents = Incident::all(); 
+        return view('officer',[
+            'incidents' => $incidents,
+        ]);    
+
+    }
 }

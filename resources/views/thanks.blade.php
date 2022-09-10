@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class = "container">
     <div class="row" style="width:800px; margin: auto" >
@@ -12,6 +11,5 @@
         </div>
         
     </div>
-    
 </div>
 @endsection

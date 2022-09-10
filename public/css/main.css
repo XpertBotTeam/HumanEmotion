@@ -1,5 +1,7 @@
 .home{
-    background-image: url("/img/eye.jpg");
+    background-image: url("/img/main_background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 .vertical-center {
     margin: 0;
