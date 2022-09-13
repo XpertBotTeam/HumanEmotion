@@ -115,12 +115,6 @@ google.maps.event.addListener(map, 'click', function(event) {
 
 }
 
-
-
-
-
-// marker.setMap(map);
-
 window.initMap = initMap;
 </script>
 <script async

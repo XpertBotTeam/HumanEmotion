@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('incidentType_id');
             $table->unsignedBigInteger('priority');
-            $table->string('details');
+            $table->string('details')->nullable(true);
 
-            $table->double('lat')->change();
-            $table->double('lng')->change();
+            $table->double('lat');
+            $table->double('lng');
 
             $table->index('incidentType_id');
         });
