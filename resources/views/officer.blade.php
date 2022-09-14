@@ -45,6 +45,7 @@
                     <th scope="col">Details</th>
                     <th scope="col">Load</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">treated</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,12 @@
                             <td> {{$incident->details}} </td>
                             <td> <a href="/Incident/{{$incident->id}}/load">Load</a> </td>
                             <td> <a href="/Incident/{{$incident->id}}/delete">Delete</a> </td>
+                            
+                            @if ($incident->treated==1)
+                                <td> &#10004;</td>
+                            @else
+                                <td></td>
+                            @endif
                             
                         </tr>       
                     @endforeach

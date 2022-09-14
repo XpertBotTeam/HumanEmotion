@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->double('lat');
             $table->double('lng');
+            
+            $table->unsignedBigInteger('treated')->default(0);
 
             $table->index('incidentType_id');
         });

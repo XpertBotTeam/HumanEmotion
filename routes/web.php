@@ -33,6 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/check', [CheckController::class, 'check']);
 Route::post('/Incident/add', [IncidentController::class, 'add']);
+Route::post('/Incident/{incident}/update', [IncidentController::class, 'update']);
 
 Route::get('/Incident/{incident}/delete', [IncidentController::class, 'delete']);
 Route::get('/Incident/{incident}/load', [IncidentController::class, 'load']);

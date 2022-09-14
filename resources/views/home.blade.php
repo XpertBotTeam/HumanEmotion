@@ -14,7 +14,7 @@
                         <div class="row mb-3">
                             <label for="incidentType" class="col-md-2 col-form-label text-md-end">{{ __('incident type') }}</label>
                             <div class="col-md-6">
-                                <select name="type" class="form-control" id="">
+                                <select name="type" class="form-control" id="" required>
                                     @foreach ( $types as $type )
                                         <option value="{{$type->id}}">{{$type->type}}</option>    
                                     @endforeach
@@ -25,11 +25,11 @@
                         <div class="row mb-3">
                             <label for="incidentType" class="col-md-2 col-form-label text-md-end">{{ __('priority') }}</label>
                             <div class="col-md-6">
-                                    <input type="radio" value="1" class="btn-check" name="options" id="option2" autocomplete="off">
-                                    <label class="btn btn-danger" for="option2">High</label>
+                                    <input type="radio" value="1" class="btn-check" name="options" id="option1" required autocomplete="off">
+                                    <label class="btn btn-danger" for="option1">High</label>
                                     
-                                    <input type="radio" value="2" class="btn-check" name="options" id="option4" autocomplete="off">
-                                    <label class="btn btn-warning" for="option4">Medium</label>
+                                    <input type="radio" value="2" class="btn-check" name="options" id="option2" autocomplete="off">
+                                    <label class="btn btn-warning" for="option2">Medium</label>
 
                                     <input type="radio"  value="3" class="btn-check" name="options" id="option3" autocomplete="off">
                                     <label style=" color: black;background-color: yellow;border-color: yellow" class="btn btn-secondary" for="option3">Low</label>

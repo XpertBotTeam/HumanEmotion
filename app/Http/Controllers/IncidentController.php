@@ -31,6 +31,8 @@ class IncidentController extends Controller
             ]);
 
             return view('thanks');
+        }else{
+            abort(404, 'Page not found');
         }
     }
 
@@ -49,15 +51,45 @@ class IncidentController extends Controller
                 'incidents' => $incidents,
             ]);    
 
+        }else{
+            abort(404, 'Page not found');
         }
 
     }
 
     protected function load($incident){
-        $incidentObj=Incident::findOrFail($incident);
-        return view ('incident-load',[
-            'incident' => $incidentObj
-        ]);
+        $user = Auth::user();
+        $role = Role::findOrFail($user->role_id);
+        $roleName = $role->roleName;      
+        if ($roleName == HomeController::OFFICER){
+            $incidentObj = Incident::findOrFail($incident);
+            return view ('incident-load',[
+                'incident' => $incidentObj
+            ]);
+        }
+        else{
+            abort(404, 'Page not found');
+        }
+    }
+
+    protected function update($incident){
+        $user = Auth::user();
+        $role = Role::findOrFail($user->role_id);
+        $roleName = $role->roleName;
+        $data=request()->all();      
+        if ($roleName == HomeController::OFFICER){
+            $incidentObj = Incident::findOrFail($incident);
+            $incidentObj->update(['treated' => $data['treated']]); //how to update field in table database
+            
+            $incidents = Incident::all(); 
+            return view('officer',[
+                'incidents' => $incidents,
+            ]);
+            
+        }
+        else{
+            abort(404, 'Page not found');
+        }
     }
 
 }

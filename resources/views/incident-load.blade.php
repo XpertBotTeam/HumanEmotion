@@ -9,7 +9,7 @@
                 <div class="card-header">#{{$incident->id}}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="/Incident/{{$incident->id}}/update">
                         @csrf
 
                         <div class="row mb-3">
@@ -46,19 +46,32 @@
                                 </div>
                         </div>
                         
-                        <div>
-                            <input type="hidden" name="lat" id="lat" />
-                        </div>
-
-                        <div>
-                            <input type="hidden" name="lng" id="lng" />
-                        </div>
-
                         <div class="row mb-3">
                             <label class="col-md-2 col-form-label text-md-end" for="map">Location</label>
                             <div class="col-md-6">
                                 <div id="map" style="width: 600px; height:300px "></div>
                             </div>
+                        </div>
+
+                        <div class="row mb-3">                            
+                            <label class="col-md-2 col-form-label text-md-end" for="treated">
+                                treated
+                            </label>
+                            <div class="col-md-6">
+                                <input class="form-check-input px-3 py-3" type="checkbox" name="treated" value="1" id="treated">
+                            </div>    
+                            </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-12  offset-md-2">
+                                <button type="submit" class="btn btn-dark">
+                                    {{ __('Save') }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="color: white; margin-left: 700px">
+                            <a href="{{ url()->previous() }}">back</a>
                         </div>
 
                     </form>
